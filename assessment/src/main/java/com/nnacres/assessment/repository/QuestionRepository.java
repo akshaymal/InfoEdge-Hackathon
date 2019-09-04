@@ -11,14 +11,17 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
+    Optional<Question> findById(final Long id);
+
     @Query(value="select p from Question p")
-    public List<Question> find(Pageable pageable);
+    List<Question> find(Pageable pageable);
 
     @Query(value="select p from Question p,Category c Where c.id =p.id and p.difficultyLevel=:difficultyLevel and c.name=:categoryName and p.type=:questionType")
-    public List<Question> findByCategoryNameAndDifficultyLevelAndType(@Param("categoryName") String categoryName, @Param("difficultyLevel") DifficultyLevel difficultyLevel, @Param("questionType") QuestionType questionType, Pageable pageRequest);
+    List<Question> findByCategoryNameAndDifficultyLevelAndType(@Param("categoryName") String categoryName, @Param("difficultyLevel") DifficultyLevel difficultyLevel, @Param("questionType") QuestionType questionType, Pageable pageRequest);
 
 }
