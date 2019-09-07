@@ -132,9 +132,18 @@ public class QuestionServiceImpl implements IQuestionService {
     public QuestionModel getQuestionById(Long id) {
         Optional<Question> optionalQuestion = questionRepository.findById(id);
         Question question = optionalQuestion.get();
-        List<QuestionModel> questionModels = new ArrayList<>();
 
         Set<TestCaseDto> testCaseDtoSet = new HashSet<>();
+
+        Set<OptionDto> optionDtos = new HashSet<>();
+        Set<Option> options = question.getOptions();
+
+        if(CollectionUtils.isNotEmpty(options)) {
+            options.stream().forEach(option -> {
+                OptionDto dto = new OptionDto();
+                optionDtos.add(dto.convertOption(option));
+            });
+        }
 
         Set<TestCase> testCases = question.getTestCases();
         if (CollectionUtils.isNotEmpty(testCases)) {
@@ -148,7 +157,7 @@ public class QuestionServiceImpl implements IQuestionService {
         }
 
         return QuestionModel.builder().customerId(question.getCustomerId()).text(question.getText())
-            .title(question.getTitle()).type(question.getType())
+            .title(question.getTitle()).type(question.getType()).optionsDtos(optionDtos)
             .testCaseDtos(testCaseDtoSet).difficultyLevel(question.getDifficultyLevel()).build();
     }
 
