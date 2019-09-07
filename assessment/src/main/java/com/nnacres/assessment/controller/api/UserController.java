@@ -52,7 +52,7 @@ public class UserController {
       ResponseObject<UserDTO> responseObject = new ResponseObject<UserDTO>(user);
       if (Objects.isNull(user)){
          responseObject.setStatus(ErrorCategory.DATA_NOT_FOUND);
-         return new ResponseEntity<>(responseObject, HttpStatus.NO_CONTENT);
+         return new ResponseEntity<>(responseObject, HttpStatus.UNAUTHORIZED);
       } else {
          responseObject.setStatus(ErrorCategory.SUCCESS);
          return new ResponseEntity<>(responseObject, HttpStatus.OK);

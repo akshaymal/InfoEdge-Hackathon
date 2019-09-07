@@ -61,6 +61,9 @@ public class QuestionServiceImpl implements IQuestionService {
         questionEntity.setCreatedDate(timestamp);
         questionEntity.setUpdatedDate(timestamp);
 
+        List<CategoryDto> categoryDtosSet = categoryService.addOption(question.getCategoryDtos());
+        questionEntity.setCategoryId(categoryDtosSet.get(0).getId());
+
         questionEntity = questionRepository.save(questionEntity);
         optionService.addOption(questionEntity.getId(), question.getOptionsDtos());
         testCaseService.addOption(questionEntity.getId(), question.getTestCaseDtos());
@@ -72,8 +75,6 @@ public class QuestionServiceImpl implements IQuestionService {
            }
         }
         questionEntity.setPoints(points);
-        List<CategoryDto> categoryDtosSet = categoryService.addOption(question.getCategoryDtos());
-        questionEntity.setCategoryId(categoryDtosSet.get(0).getId());
         return question.convertToQuestion(questionEntity);
     }
 
