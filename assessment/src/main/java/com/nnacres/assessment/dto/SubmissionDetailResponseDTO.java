@@ -12,10 +12,6 @@ import lombok.ToString;
 
 import java.util.Date;
 
-/**
- * Created by Vishal on 20/12/17.
- */
-
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter

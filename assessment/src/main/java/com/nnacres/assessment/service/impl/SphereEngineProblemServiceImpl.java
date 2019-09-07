@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
-/**
- * Created by Vishal on 20/12/17.
- */
 
 @Service
 @Slf4j

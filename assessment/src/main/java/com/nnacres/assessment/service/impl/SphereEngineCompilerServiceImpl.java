@@ -30,9 +30,6 @@ import java.util.Set;
 import static com.nnacres.assessment.enums.ErrorCategory.SPHERE_ENGINE_COMPILATION_FAILED;
 
 
-/**
- * Created by Vishal on 20/12/17.
- */
 
 @Service
 @Slf4j

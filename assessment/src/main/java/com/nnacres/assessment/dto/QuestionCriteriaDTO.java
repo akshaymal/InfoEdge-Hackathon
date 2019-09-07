@@ -14,9 +14,6 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
-/**
- * Created by Vishal on 20/12/17.
- */
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)

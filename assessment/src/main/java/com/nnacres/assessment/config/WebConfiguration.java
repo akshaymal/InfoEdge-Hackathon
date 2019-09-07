@@ -8,12 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-/**
- * WebConfiguration loads Context Initializer Setting
- *
- * @author anand
- * @since 0.0.1
- */
+
 @Configuration
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 

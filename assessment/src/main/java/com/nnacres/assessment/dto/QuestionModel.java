@@ -22,10 +22,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-/**
- * @author ashwini.pillai
- */
-
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -44,6 +40,7 @@ public class QuestionModel {
     private String title;
     private QuestionType type;
     private DifficultyLevel difficultyLevel;
+    private Long points;
 
     private Set<OptionDto> optionsDtos;
 
@@ -84,7 +81,7 @@ public class QuestionModel {
         return this.builder().customerId(question.getCustomerId()).text(question.getText())
             .title(question.getTitle()).type(question.getType()).questionId(question.getId())
             .difficultyLevel(question.getDifficultyLevel()).categoryDtos(categoryDtos).optionsDtos(optionDtos)
-            .testCaseDtos(testCaseDTOset).build();
+            .testCaseDtos(testCaseDTOset).points(question.getPoints()).build();
 
 
     }

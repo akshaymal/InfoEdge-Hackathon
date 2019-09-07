@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Vishal on 19/12/17.
- */
 
 @Service
 public class ContestQuestionServiceImpl implements ContestQuestionService {

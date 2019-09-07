@@ -6,9 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/**
- * Created by Vishal on 16/12/17.
- */
+
 
 @Entity
 @Table(name = "CATEGORY")

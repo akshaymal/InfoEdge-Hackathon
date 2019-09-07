@@ -8,10 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-/**
- * @author anand
- * @since 0.0.1
- */
+
 @Getter
 @Setter
 @Builder

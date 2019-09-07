@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Neelasha on 20/12/17.
- */
 
 @RestController
 @RequestMapping("${api.version}/questionresponse")

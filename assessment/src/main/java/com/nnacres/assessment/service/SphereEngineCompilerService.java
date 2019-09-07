@@ -12,9 +12,6 @@ import com.nnacres.assessment.response.ResponseObject;
 import java.util.List;
 
 
-/**
- * Created by Vishal on 20/12/17.
- */
 public interface SphereEngineCompilerService {
 
     SubmissionDetailResponseDTO getSubmission(Integer id, Boolean withSource, Boolean withInput,

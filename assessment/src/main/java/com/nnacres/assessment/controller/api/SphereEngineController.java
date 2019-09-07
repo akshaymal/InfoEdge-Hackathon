@@ -20,10 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * Created by Vishal on 20/12/17.
- */
-
 @RestController
 @RequestMapping("${api.version}/engine")
 public class SphereEngineController {

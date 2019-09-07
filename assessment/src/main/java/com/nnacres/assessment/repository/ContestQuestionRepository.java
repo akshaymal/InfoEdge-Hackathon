@@ -6,9 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Vishal on 19/12/17.
- */
 
 @Repository
 public interface ContestQuestionRepository extends JpaRepository<ContestQuestion, Long> {

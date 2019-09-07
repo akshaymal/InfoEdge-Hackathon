@@ -5,10 +5,7 @@ import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * @author anand
- * @since 0.0.1
- */
+
 @Getter
 public class GenericException extends Exception {
 

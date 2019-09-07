@@ -13,9 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- * Created by Vishal on 16/12/17.
- */
+
 @Entity
 @Table(name = "QUESTION")
 @Getter
@@ -31,6 +29,9 @@ public class Question extends BaseEntity{
     
     @Column(name = "CATEGORY_ID", nullable = false)
     private Long categoryId;
+    
+    @Column(name = "POINTS")
+    private Long points;
 
     @Column(name = "TEXT", columnDefinition = "text",nullable = false)
     private String text;
