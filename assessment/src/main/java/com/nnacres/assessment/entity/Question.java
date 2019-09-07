@@ -28,6 +28,9 @@ public class Question extends BaseEntity{
 
     @Column(name = "CUSTOMER_ID", nullable = false)
     private Long customerId;
+    
+    @Column(name = "CATEGORY_ID", nullable = false)
+    private Long categoryId;
 
     @Column(name = "TEXT", columnDefinition = "text",nullable = false)
     private String text;

@@ -1,5 +1,6 @@
 package com.nnacres.assessment.service.impl;
 
+import com.nnacres.assessment.dto.CategoryDto;
 import com.nnacres.assessment.dto.OptionDto;
 import com.nnacres.assessment.dto.QuestionCriteriaDTO;
 import com.nnacres.assessment.dto.QuestionModel;
@@ -67,7 +68,8 @@ public class QuestionServiceImpl implements IQuestionService {
         questionEntity = questionRepository.save(questionEntity);
         optionService.addOption(questionEntity.getId(), question.getOptionsDtos());
         testCaseService.addOption(questionEntity.getId(), question.getTestCaseDtos());
-        categoryService.addOption(question.getCategoryDtos());
+        List<CategoryDto> categoryDtosSet = categoryService.addOption(question.getCategoryDtos());
+        questionEntity.setCategoryId(categoryDtosSet.get(0).getId());
         return question.convertToQuestion(questionEntity);
     }
 
@@ -157,22 +159,20 @@ public class QuestionServiceImpl implements IQuestionService {
         Set<QuestionCriteriaDTO> questionCriteriaDTOSet = randomQuestionDTO.getQuestionCriteriaDTOs();
 
         List<List<QuestionModel>> totalQuestionList = new ArrayList<>();
-        List<QuestionModel> questionModel = new ArrayList<>();
         questionCriteriaDTOSet.forEach(dto -> {
             List<Question> question = questionRepository.findByCategoryNameAndDifficultyLevelAndType(dto.getCategoryName(),
                 dto.getDifficultyLevel(), dto.getType(), (new PageRequest(0, dto.getQuestionCount())));
+            List<QuestionModel> questionModel = new ArrayList<>();
             if (CollectionUtils.isNotEmpty(question)) {
                 question.parallelStream().forEach(dto1 -> {
                     QuestionModel questionModel1 = QuestionModel.builder().customerId(dto1.getCustomerId()).text(dto1.getText())
-                        .title(dto1.getTitle()).type(dto1.getType())
+                        .title(dto1.getTitle()).type(dto1.getType()).id(dto1.getId())
                         .difficultyLevel(dto.getDifficultyLevel()).build();
 
                     questionModel.add(questionModel1);
                 });
-
-                totalQuestionList.add(questionModel);
-
             }
+            totalQuestionList.add(questionModel);
         });
         return totalQuestionList;
 

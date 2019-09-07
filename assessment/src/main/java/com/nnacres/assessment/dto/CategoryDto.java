@@ -23,10 +23,12 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 public class CategoryDto {
     private String name;
+    
+    private Long id;
 
     @JsonIgnore
     public CategoryDto convertCategory(Category category) {
-        return this.builder().name(category.getName()).build();
+        return this.builder().name(category.getName()).id(category.getId()).build();
     }
 
 }
