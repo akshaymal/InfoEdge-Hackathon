@@ -33,11 +33,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-
-/**
- * @author ashwini.pillai
- */
-
 @Service
 public class QuestionServiceImpl implements IQuestionService {
     @Autowired

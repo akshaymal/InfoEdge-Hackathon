@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * @author ashwini.pillai
- */
 
 @RestController
 @RequestMapping("${api.version}/question")
