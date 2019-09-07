@@ -58,7 +58,7 @@ public class SphereEngineController {
     }
 
 
-    @GetMapping(value = "/submission/create")
+    @PostMapping(value = "/submission/create")
     public ResponseEntity<ResponseObject<Integer>> createSubmission(@RequestBody CodeResponseDTO codeResponseDTO) {
 
         Integer status = sphereEngineCompilerService.createSubmission(codeResponseDTO);
