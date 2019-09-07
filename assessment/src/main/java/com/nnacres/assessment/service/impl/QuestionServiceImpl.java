@@ -95,11 +95,11 @@ public class QuestionServiceImpl implements IQuestionService {
     public List<QuestionModel> getAllQuestions() {
         List<Question> questions = questionRepository.findAll();
         List<QuestionModel> questionModels = new ArrayList<>();
-        Set<TestCaseDto> testCaseDtoSet = new HashSet<>();
-        Set<OptionDto> optionDtoSet = new HashSet<>();
         questions.forEach(question -> {
+            Set<OptionDto> optionDtoSet = new HashSet<>();
             Set<TestCase> testCases = question.getTestCases();
             Set<Option> options = question.getOptions();
+            Set<TestCaseDto> testCaseDtoSet = new HashSet<>();
             if (CollectionUtils.isNotEmpty(testCases)) {
                 for (TestCase testCase : testCases) {
                     if (testCase.isSample()) {
