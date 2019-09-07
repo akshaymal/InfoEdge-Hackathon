@@ -7,9 +7,7 @@ import com.nnacres.assessment.enums.ContestStatus;
 
 import java.util.List;
 
-/**
- * Created by Vishal on 19/12/17.
- */
+
 public interface ContestService {
 
     ContestDTO createContest(ContestDTO contestDTO);

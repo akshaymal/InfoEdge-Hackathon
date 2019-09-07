@@ -13,9 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- * Created by Vishal on 16/12/17.
- */
+
 @Entity
 @Table(name = "QUESTION")
 @Getter

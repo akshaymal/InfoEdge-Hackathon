@@ -2,10 +2,7 @@ package com.nnacres.assessment.enums;
 
 import lombok.Getter;
 
-/**
- * @author anand
- * @since 0.0.1
- */
+
 @Getter
 public enum ErrorCategory {
     //@formatter:off

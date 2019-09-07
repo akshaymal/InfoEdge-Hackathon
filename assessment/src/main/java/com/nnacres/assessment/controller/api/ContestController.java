@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Vishal on 19/12/17.
- */
 
 @RestController
 @RequestMapping("${api.version}/contest")

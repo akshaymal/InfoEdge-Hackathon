@@ -4,9 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-/**
- * Created by Vishal on 18/12/17.
- */
+
 
 @Getter
 @Setter

@@ -11,10 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/**
- * @author anand
- * @since 0.0.1
- */
+
 @Getter
 @Setter
 @Builder
