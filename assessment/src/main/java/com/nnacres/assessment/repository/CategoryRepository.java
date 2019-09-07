@@ -11,5 +11,8 @@ public interface CategoryRepository extends JpaRepository<Category,Integer> {
 
     @Query("SELECT CASE WHEN COUNT(c) > 0 THEN false ELSE true END FROM Category c WHERE lower(c.name) = :name")
     boolean NotExistsByName(@Param("name") String category);
+   
+    @Query("SELECT c FROM Category c WHERE lower(c.name) = :name")
+    Category findByName(@Param("name") String category);
 
 }

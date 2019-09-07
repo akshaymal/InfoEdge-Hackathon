@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -38,10 +39,15 @@ public class CategoryServiceImpl implements CategoryService {
 
                 category.setCreatedDate(timestamp);
                 category.setUpdatedDate(timestamp);
+                
+                final Category storedCategory = categoryRepository.findByName(category.getName().toLowerCase());
 
-                if(categoryRepository.NotExistsByName((category.getName().toLowerCase())))
+                if(Objects.isNull(storedCategory))
                 {
                     categories.add(category);
+                }
+                else {
+                   categoryDtosSet.add(dto.convertCategory(storedCategory));
                 }
                 ;
             });

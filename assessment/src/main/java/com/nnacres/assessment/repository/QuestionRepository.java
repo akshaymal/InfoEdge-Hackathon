@@ -21,7 +21,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query(value="select p from Question p")
     List<Question> find(Pageable pageable);
 
-    @Query(value="select p from Question p,Category c Where c.id =p.id and p.difficultyLevel=:difficultyLevel and c.name=:categoryName and p.type=:questionType")
+    @Query(value="select p from Question p,Category c Where c.id = p.categoryId and p.difficultyLevel=:difficultyLevel and c.name=:categoryName and p.type=:questionType")
     List<Question> findByCategoryNameAndDifficultyLevelAndType(@Param("categoryName") String categoryName, @Param("difficultyLevel") DifficultyLevel difficultyLevel, @Param("questionType") QuestionType questionType, Pageable pageRequest);
 
 }
