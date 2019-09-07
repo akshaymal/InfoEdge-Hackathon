@@ -64,7 +64,7 @@ public class ContestDTO implements Serializable{
         return this.builder().id(contest.getId()).name(contest.getName())
             .description(contest.getDescription()).duration(contest.getDuration())
             .startDate(contest.getStartDate()).endDate(contest.getEndDate())
-            .openContest(contest.isOpenContest()).status(contest.getStatus())
+            .openContest(contest.isOpenContest()).status(contest.getStatus()).contestQuestionDTOs(qustionDTOs)
             .build();
 
 
