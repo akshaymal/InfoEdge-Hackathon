@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,20 @@ public class UserController {
 
    @Autowired
    private UsersService usersService;
+
+   @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+   public ResponseEntity<ResponseObject<List<UserDTO>>> getAllUsers() {
+      final List<UserDTO> users = usersService.getAllUsers();
+      ResponseObject<List<UserDTO>> responseObject = new ResponseObject<>(users);
+
+      if (CollectionUtils.isEmpty(users)){
+         responseObject.setStatus(ErrorCategory.DATA_NOT_FOUND);
+         return new ResponseEntity<>(responseObject, HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+
+      responseObject.setStatus(ErrorCategory.SUCCESS);
+      return new ResponseEntity<>(responseObject, HttpStatus.OK);
+   }
 
    @RequestMapping(value = "/getUser/{username}", method = RequestMethod.GET)
    public ResponseEntity<ResponseObject<List<UserDTO>>> getUserByUsername(@PathVariable String username) {

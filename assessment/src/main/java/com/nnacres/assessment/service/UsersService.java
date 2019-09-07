@@ -6,6 +6,8 @@ import com.nnacres.assessment.dto.UserDTO;
 
 public interface UsersService {
 
+   List<UserDTO> getAllUsers();
+
    List<UserDTO> getUserByUsername(final String username);
 
    UserDTO createUser(final UserDTO userDTO);
