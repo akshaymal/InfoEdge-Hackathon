@@ -31,7 +31,7 @@ public class TestCaseServiceImpl implements TestCaseService {
 
                 TestCase testCase =
                     TestCase.builder().questionId(questionId).input(dto.getInput())
-                        .output(dto.getOutput()).isSample(dto.isSample()).build();
+                        .output(dto.getOutput()).isSample(dto.isSample()).marks(dto.getMarks()).build();
 
                 testCase.setCreatedDate(timestamp);
                 testCase.setUpdatedDate(timestamp);

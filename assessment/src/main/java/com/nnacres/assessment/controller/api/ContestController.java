@@ -73,5 +73,4 @@ public class ContestController {
         return new ResponseEntity<>(responseObject, HttpStatus.OK);
     }
 
-
 }

@@ -9,6 +9,7 @@ import com.nnacres.assessment.dto.TestCaseDto;
 import com.nnacres.assessment.entity.Option;
 import com.nnacres.assessment.entity.Question;
 import com.nnacres.assessment.entity.TestCase;
+import com.nnacres.assessment.enums.QuestionType;
 import com.nnacres.assessment.exception.GenericException;
 import com.nnacres.assessment.repository.OptionRepository;
 import com.nnacres.assessment.repository.QuestionRepository;
@@ -68,6 +69,14 @@ public class QuestionServiceImpl implements IQuestionService {
         questionEntity = questionRepository.save(questionEntity);
         optionService.addOption(questionEntity.getId(), question.getOptionsDtos());
         testCaseService.addOption(questionEntity.getId(), question.getTestCaseDtos());
+        long points = 0;
+        if (question.getType() == QuestionType.CODING) {
+           Set<TestCaseDto> testDtos = question.getTestCaseDtos();
+           for(TestCaseDto test : testDtos) {
+              points = points + test.getMarks();
+           }
+        }
+        questionEntity.setPoints(points);
         List<CategoryDto> categoryDtosSet = categoryService.addOption(question.getCategoryDtos());
         questionEntity.setCategoryId(categoryDtosSet.get(0).getId());
         return question.convertToQuestion(questionEntity);
@@ -82,7 +91,7 @@ public class QuestionServiceImpl implements IQuestionService {
                 QuestionModel questionModel1 = QuestionModel.builder().customerId(dto.getCustomerId()).text(dto.getText())
                     .title(dto.getTitle()).type(dto.getType())
                     .questionId(dto.getId())
-                    .difficultyLevel(dto.getDifficultyLevel()).build();
+                    .difficultyLevel(dto.getDifficultyLevel()).points(dto.getPoints()).build();
 
                 questionModel.add(questionModel1);
             });
@@ -120,7 +129,7 @@ public class QuestionServiceImpl implements IQuestionService {
             }
             QuestionModel questionModel = QuestionModel.builder().customerId(question.getCustomerId()).text(question.getText())
                 .title(question.getTitle()).type(question.getType()).optionsDtos(optionDtoSet).questionId((question.getId()))
-                .testCaseDtos(testCaseDtoSet).difficultyLevel(question.getDifficultyLevel()).build();
+                .testCaseDtos(testCaseDtoSet).difficultyLevel(question.getDifficultyLevel()).points(question.getPoints()).build();
             questionModels.add(questionModel);
         });
         return questionModels;
@@ -158,7 +167,7 @@ public class QuestionServiceImpl implements IQuestionService {
 
         return QuestionModel.builder().customerId(question.getCustomerId()).text(question.getText())
             .title(question.getTitle()).type(question.getType()).optionsDtos(optionDtos)
-            .testCaseDtos(testCaseDtoSet).difficultyLevel(question.getDifficultyLevel()).build();
+            .testCaseDtos(testCaseDtoSet).difficultyLevel(question.getDifficultyLevel()).points(question.getPoints()).build();
     }
 
     @Override
@@ -176,7 +185,7 @@ public class QuestionServiceImpl implements IQuestionService {
                 question.parallelStream().forEach(dto1 -> {
                     QuestionModel questionModel1 = QuestionModel.builder().customerId(dto1.getCustomerId()).text(dto1.getText())
                         .title(dto1.getTitle()).type(dto1.getType()).id(dto1.getId())
-                        .difficultyLevel(dto.getDifficultyLevel()).build();
+                        .difficultyLevel(dto.getDifficultyLevel()).points(dto1.getPoints()).build();
 
                     questionModel.add(questionModel1);
                 });
