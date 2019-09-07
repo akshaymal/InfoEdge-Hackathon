@@ -31,6 +31,9 @@ public class Question extends BaseEntity{
     
     @Column(name = "CATEGORY_ID", nullable = false)
     private Long categoryId;
+    
+    @Column(name = "POINTS")
+    private Long points;
 
     @Column(name = "TEXT", columnDefinition = "text",nullable = false)
     private String text;
