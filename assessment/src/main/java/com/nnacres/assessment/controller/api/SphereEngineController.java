@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("${api.version}/engine")
@@ -64,9 +65,9 @@ public class SphereEngineController {
 
     @PostMapping(value = "/get-result")
     public ResponseEntity<ResponseObject<List<Boolean>>> getResult(@RequestBody CodeResponseDTO codeResponseDTO) {
-        ResponseObject<List<Boolean>> responseObject =
-            sphereEngineCompilerService.getResult(codeResponseDTO);
-        return new ResponseEntity<ResponseObject<List<Boolean>>>(responseObject, HttpStatus.OK);
+        ResponseObject<List<Boolean>> responseObject;
+         responseObject = sphereEngineCompilerService.getResult(codeResponseDTO);
+         return new ResponseEntity<ResponseObject<List<Boolean>>>(responseObject, HttpStatus.OK);
     }
 
 

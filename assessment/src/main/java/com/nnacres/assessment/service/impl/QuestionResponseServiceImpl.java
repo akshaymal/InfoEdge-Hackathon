@@ -71,9 +71,7 @@ public class QuestionResponseServiceImpl implements IQuestionResponseService {
                             questionResponse.setMarks(marks.stream().mapToInt(i->i).sum());
 
                         }
-                    } catch (ClientException e) {
-                        e.printStackTrace();
-                    } catch (ConnectionException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
